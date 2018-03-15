@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- sql query -->
+<mapper namespace="test">
+	<!-- find a user throw user id -->
+	<select id="findUserById" parameterType="Integer" resultType="past.project.mybatisReview.pojo.User">
+		select * from user where id = #{v}
+	</select>
+
+</mapper>
