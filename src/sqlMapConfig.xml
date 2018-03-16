@@ -3,6 +3,15 @@
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+	<properties resource="jdbc.properties"></properties>
+	<!-- -->
+	<typeAliases>
+		<!-- <typeAlias type="past.project.mybatisReview.pojo.User"
+			alias="User" />  -->
+		<package name="past.project.mybatisReview.pojo"></package>
+	</typeAliases>
+
 	<!-- This environment tag will be deleted when compiling with spring -->
 	<!-- Using spring JDBC Template -->
 	<environments default="development">
@@ -11,15 +20,18 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			<transactionManager type="JDBC" />
 			<!-- Database Connection Pool -->
 			<dataSource type="POOLED">
-				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="driver" value="${jdbc.driver}" />
 				<property name="url"
-					value="jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf-8" />
-				<property name="username" value="root" />
-				<property name="password" value="root" />
+					value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
 			</dataSource>
 		</environment>
 	</environments>
 	<mappers>
+	
 		<mapper resource="sqlmap/User.xml" />
+		<!-- <mapper class="past.project.mybatisReview.mapper.UserMapper"></mapper> -->
+		<!-- <package name="past.project.mybatisReview.mapper"></package> -->
 	</mappers>
 </configuration>

@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from user where username like "%${value}%" </select> -->
 
 	<!-- insert a user -->
-	<insert id="insertUser" parameterType="past.project.mybatisReview.pojo.User">
+	<insert id="insertUser" parameterType="User">
 		<selectKey keyProperty="id" resultType="Integer" order="AFTER">select
 			LAST_INSERT_ID()
 		</selectKey>
