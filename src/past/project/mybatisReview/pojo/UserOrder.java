@@ -13,6 +13,15 @@ public class UserOrder implements Serializable{
 	private String number;
 	private String createtime;
 	private String note;
+	
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	/**
 	 * @return the id
 	 */
@@ -79,7 +88,7 @@ public class UserOrder implements Serializable{
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", userId=" + userId + ", number=" + number + ", createtime=" + createtime
-				+ ", note=" + note + "]";
+				+ ", note=" + note + "]" + user.getUsername();
 	}
 	
 	

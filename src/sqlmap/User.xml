@@ -74,4 +74,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</foreach>
 		</where>
 	</select>
+
+	<resultMap type="past.project.mybatisReview.pojo.User" id="usersWithOrders">
+		<id column="id" property="id" />
+		<result column="username" property="username"></result>
+		<collection property="userOrders"
+			ofType="past.project.mybatisReview.pojo.UserOrder">
+			<id column="oid" property="id" />
+		<result column="number" property="number"></result></collection>
+	</resultMap>
+	<select id="selectUsersWithOrders" resultMap="usersWithOrders">
+		select  u.id as id, o.id as oid,
+		o.number, o.createtime, u.username
+		from user u left join userorder o
+		on
+		o.user_id = u.id</select>
 </mapper>

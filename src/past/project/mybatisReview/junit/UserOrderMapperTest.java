@@ -14,8 +14,24 @@ import past.project.mybatisReview.pojo.UserOrder;
 
 public class UserOrderMapperTest {
 
+//	@Test
+//	public void testUserOrderById() throws Exception {
+//		String resource = "sqlMapConfig.xml";
+//
+//		InputStream is = Resources.getResourceAsStream(resource);
+//		// create sql session factory
+//		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
+//		// create sql session
+//		SqlSession sqlSession = sqlSessionFactory.openSession();
+//		// SqlSession will initialize automatically based on the interface
+//		UserOrderMapper orderMapper = sqlSession.getMapper(UserOrderMapper.class);
+//		UserOrder order = orderMapper.findOrderById(3);
+//		System.out.println(order);
+//
+//	}
+	
 	@Test
-	public void testUserOrderById() throws Exception {
+	public void testSelectUserOrderUser() throws Exception {
 		String resource = "sqlMapConfig.xml";
 
 		InputStream is = Resources.getResourceAsStream(resource);
@@ -25,8 +41,11 @@ public class UserOrderMapperTest {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		// SqlSession will initialize automatically based on the interface
 		UserOrderMapper orderMapper = sqlSession.getMapper(UserOrderMapper.class);
-		UserOrder order = orderMapper.findOrderById(3);
-		System.out.println(order);
+		List<UserOrder> userOrderList = orderMapper.selectUserOrders();
+		
+		for(UserOrder uOrder : userOrderList){
+			System.out.println(uOrder);
+		}
 
 	}
 }

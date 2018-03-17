@@ -3,6 +3,7 @@ package past.project.mybatisReview.pojo;
 import java.io.Serializable;
 
 import java.util.Date;
+import java.util.List;
 
 public class User implements Serializable {
 	/**
@@ -14,6 +15,15 @@ public class User implements Serializable {
 	private String sex;// 性别
 	private String birthday;// 生日
 	private String address;// 地址
+	private List<UserOrder> userOrders;
+
+	public List<UserOrder> getUserOrders() {
+		return userOrders;
+	}
+
+	public void setUserOrders(List<UserOrder> userOrders) {
+		this.userOrders = userOrders;
+	}
 
 	public Integer getId() {
 		return id;
@@ -59,6 +69,14 @@ public class User implements Serializable {
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", sex=" + sex + ", birthday=" + birthday + ", address="
 				+ address + "]";
+	}
+
+	public void printUserWithOrders() {
+		System.out.println("User [id=" + id + ", username=" + username + ", sex=" + sex + ", birthday=" + birthday
+				+ ", address=" + address + "]");
+		for (UserOrder uOrder : userOrders) {
+			System.out.println(uOrder.getId() + " " + uOrder.getNumber());
+		}
 	}
 
 }

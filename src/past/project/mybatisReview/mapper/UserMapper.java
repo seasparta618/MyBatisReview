@@ -25,4 +25,6 @@ public interface UserMapper {
 //	public List<User> selectUsersByIds(List<Integer> idList);
 	
 	public List<User> selectUsersByIds(QueryVo qVo);
+
+	public List<User> selectUsersWithOrders();
 }

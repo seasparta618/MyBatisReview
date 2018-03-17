@@ -11,4 +11,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findOrderById" parameterType="Integer" resultMap="UserOrderMapping">
 		select * from userorder where id=#{v}
 	</select>
+	
+	
+	
+	
+	<resultMap type="past.project.mybatisReview.pojo.UserOrder"
+		id="UserOrderUserMapping">
+		<id column="id" property="id"></id>
+		<result column="uid" property="userId"></result>
+		<association property="user" javaType="User">
+			<id column="uid" property="id" />
+			<result column="username" property="username" />
+		</association>
+	</resultMap>
+	<select id="selectUserOrders" resultMap="UserOrderUserMapping">
+		select o.id, 
+		o.number, o.createtime, u.id as uid, u.username
+		from userorder o left join user u
+		on
+		o.user_id = u.id
+	</select>
+
 </mapper>
