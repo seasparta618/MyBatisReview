@@ -18,5 +18,11 @@ public interface UserMapper {
 	
 	public Integer countUser();
 	
+	public List<User> selectUserBySexAndUserName(User user);
 	
+//	public List<User> selectUsersByIds(Integer[] ids);
+//	
+//	public List<User> selectUsersByIds(List<Integer> idList);
+	
+	public List<User> selectUsersByIds(QueryVo qVo);
 }

@@ -4,6 +4,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- sql query -->
 <mapper namespace="past.project.mybatisReview.mapper.UserMapper">
+
+	<sql id="selectorAll">
+		select * from user
+	</sql>
 	<!-- find a user throw user id -->
 	<select id="findUserById" parameterType="Integer"
 		resultType="past.project.mybatisReview.pojo.User">
@@ -43,10 +47,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- find the user by user name -->
 	<select id="findUserByQueryVo" parameterType="String"
 		resultType="past.project.mybatisReview.pojo.User">
-		select * from user where username like "%"#{user.username}"%"</select>
+		select * from user where username like
+		"%"#{user.username}"%"</select>
 
 	<!-- count all the users -->
 	<select id="countUser" resultType="Integer">
 		select count(id) from user
+	</select>
+
+	<select id="selectUserBySexAndUserName" parameterType="past.project.mybatisReview.pojo.User"
+		resultType="past.project.mybatisReview.pojo.User">
+		<include refid="selectorAll" />
+		<where>
+			<if test="sex!=null and sex!=''"> and sex=#{sex}</if>
+			<if test="username!=null and username!=''">and username = #{username}</if>
+		</where>
+	</select>
+
+	<select id="selectUsersByIds" parameterType="past.project.mybatisReview.pojo.QueryVo"
+		resultType="User">
+		<include refid="selectorAll" />
+		<where>
+			<foreach collection="idList" item="id" separator="," open="id in ("
+				close=")">
+				#{id}
+			</foreach>
+		</where>
 	</select>
 </mapper>
