@@ -1,5 +1,8 @@
 package past.project.mybatisReview.mapper;
 
+import java.util.List;
+
+import past.project.mybatisReview.pojo.QueryVo;
 import past.project.mybatisReview.pojo.User;
 
 public interface UserMapper {
@@ -11,6 +14,9 @@ public interface UserMapper {
 	//binding with the xml file
 	public User findUserById(Integer userId);
 	
+	public List<User> findUserByQueryVo(QueryVo qVo);
+	
+	public Integer countUser();
 	
 	
 }

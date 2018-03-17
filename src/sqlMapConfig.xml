@@ -33,5 +33,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="sqlmap/User.xml" />
 		<!-- <mapper class="past.project.mybatisReview.mapper.UserMapper"></mapper> -->
 		<!-- <package name="past.project.mybatisReview.mapper"></package> -->
+		<mapper resource="sqlmap/UserOrder.xml" />
 	</mappers>
 </configuration>

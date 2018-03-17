@@ -39,4 +39,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from user where
 		id = #{id}
 	</delete>
+
+	<!-- find the user by user name -->
+	<select id="findUserByQueryVo" parameterType="String"
+		resultType="past.project.mybatisReview.pojo.User">
+		select * from user where username like "%"#{user.username}"%"</select>
+
+	<!-- count all the users -->
+	<select id="countUser" resultType="Integer">
+		select count(id) from user
+	</select>
 </mapper>
